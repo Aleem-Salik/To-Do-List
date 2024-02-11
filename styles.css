@@ -45,6 +45,7 @@ body {
 .submit-btn {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .add-icon {
@@ -65,4 +66,17 @@ body {
   width: 65%;
   padding: 0.6rem 1.2rem;
   background-color: #eff396;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-icon {
+  height: 2rem;
+  width: 2rem;
 }
