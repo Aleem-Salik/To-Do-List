@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Teko", sans-serif;
+  background-color: #74e291;
+}
+
+.heading {
+  font-size: 4.8rem;
+  text-align: center;
+  margin: 1.8rem 0;
+}
+
+.input-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 3.2rem;
+}
+
+.input-task {
+  font-size: 3.2rem;
+  width: 75%;
+  /* padding: 0 0.2rem; */
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #555;
+  transition: all 0.3s;
+}
+
+.input-task:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.submit-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.add-icon {
+  height: 4rem;
+  width: 4rem;
+  color: #333;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.task {
+  font-size: 2.4rem;
+  width: 65%;
+  padding: 0.6rem 1.2rem;
+  background-color: #eff396;
+}
