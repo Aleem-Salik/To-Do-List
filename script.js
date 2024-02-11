@@ -53,7 +53,7 @@ document.querySelectorAll(".delete-btn").forEach((btn) => {
     const deleteText = deleteTask.querySelector(".task-title").innerText;
 
     tasksArr = tasksArr.filter((task) => task !== deleteText);
-    console.log(deleteTask);
+
     deleteTask.style.display = "none";
     localStorage.setItem("tasks", JSON.stringify(tasksArr));
   });
