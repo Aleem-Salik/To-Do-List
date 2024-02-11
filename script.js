@@ -31,7 +31,7 @@ const createTaskHTML = function (task) {
 const getData = function () {
   const result = localStorage.getItem("tasks");
   const value = JSON.parse(result);
-  tasksArr = value;
+  tasksArr = value ? value : [];
 };
 
 getData();
