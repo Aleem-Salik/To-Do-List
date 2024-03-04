@@ -4,10 +4,10 @@ const tasksEl = document.querySelector(".tasks");
 
 let tasksArr = [];
 
-const createTaskHTML = function (task) {
+const createTaskHTML = function (task, id) {
   const taskHTML = `<div class="task">
                       <p class="task-title">${task}</p>
-                      <button class="delete-btn">
+                      <button class="delete-btn" id="${id}">
                         <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -26,6 +26,8 @@ const createTaskHTML = function (task) {
                     </div>`;
 
   tasksEl.insertAdjacentHTML("afterbegin", taskHTML);
+  const deleteBtn = document.getElementById(`${id}`);
+  deleteHandler(deleteBtn);
 };
 
 const getData = function () {
@@ -36,25 +38,31 @@ const getData = function () {
 
 getData();
 
-tasksArr.forEach(createTaskHTML);
+tasksArr.forEach((task) => {
+  createTaskHTML(task.content, task.id);
+});
 
 inputFormEl.addEventListener("submit", function (e) {
   e.preventDefault();
+  const date = new Date();
+  const id = Number(date);
   const task = inputTaskEl.value;
-  tasksArr.push(task);
+
+  tasksArr.push({
+    id: id,
+    content: task,
+  });
+
   localStorage.setItem("tasks", JSON.stringify(tasksArr));
-  createTaskHTML(task);
+  createTaskHTML(task, id);
   inputTaskEl.value = "";
 });
 
-document.querySelectorAll(".delete-btn").forEach((btn) => {
+function deleteHandler(btn) {
   btn.addEventListener("click", function (e) {
-    const deleteTask = e.target.closest(".task");
-    const deleteText = deleteTask.querySelector(".task-title").innerText;
-
-    tasksArr = tasksArr.filter((task) => task !== deleteText);
-
-    deleteTask.style.display = "none";
+    const id = e.target.closest(".delete-btn").getAttribute("id");
+    tasksArr = tasksArr.filter((task) => task.id !== Number(id));
     localStorage.setItem("tasks", JSON.stringify(tasksArr));
+    this.closest(".task").style.display = "none";
   });
-});
+}
